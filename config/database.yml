@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: cognith_test
+
+development:
+  <<: *default
+  database: cognith_test_development
+
+test:
+  <<: *default
+  database: cognith_test_test
+
+production:
+  <<: *default
+  database: cognith_test_production
+  username: cognith_test
+  password: <%= ENV["COGNITH_TEST_DATABASE_PASSWORD"] %>
